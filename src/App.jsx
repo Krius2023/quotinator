@@ -5,18 +5,11 @@ function App() {
 
   const [quote, setQuote] = useState("");
   const [by, setBy] = useState("");
-  const [hasCopied, setHasCopied] = useState(false);
 
   const populateQuote = () => {
-    setHasCopied(false)
     let quotesResponse = getTodaysQuote();
     setQuote(quotesResponse.body);
     setBy(quotesResponse.by);
-  };
-  const copyQuoteToClipboard = () => {
-    setHasCopied(true)
-    setTimeout(() => { setHasCopied(false) }, 750)
-    navigator.clipboard.writeText(`${quote} - ${by}`);
   };
 
   return (
